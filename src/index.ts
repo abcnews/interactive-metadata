@@ -1,8 +1,11 @@
 import { whenOdysseyLoaded } from '@abcnews/env-utils';
 import { getMountValue, selectMounts } from '@abcnews/mount-utils';
 import type { ComponentType } from 'svelte/internal';
-import App from './components/App/App.svelte';
+import ContactsQuiz from './components/ContactsQuiz/ContactsQuiz.svelte';
+import DailyRoute from './components/DailyRoute/DailyRoute.svelte';
 import Download from './components/Download/Download.svelte';
+import InterpolatedHeatmap from './components/InterpolatedHeatmap/InterpolatedHeatmap.svelte';
+import PopularContacts from './components/PopularContacts/PopularContacts.svelte';
 
 whenOdysseyLoaded.then(() => {
   selectMounts('metadata').forEach(mountEl => {
@@ -10,23 +13,20 @@ whenOdysseyLoaded.then(() => {
     let Component: ComponentType | null = null;
 
     switch (componentName) {
-      case 'all-days':
-        Component = App;
-        break;
       case 'contacts-quiz':
-        Component = App;
+        Component = ContactsQuiz;
         break;
       case 'daily-route':
-        Component = App;
+        Component = DailyRoute;
         break;
       case 'download':
         Component = Download;
         break;
-      case 'heat-interpolated':
-        Component = App;
+      case 'interpolated-heatmap':
+        Component = InterpolatedHeatmap;
         break;
       case 'popular-contacts':
-        Component = App;
+        Component = PopularContacts;
         break;
       default:
         console.debug(`[metadata] Unrecognised component name: ${componentName}`);
