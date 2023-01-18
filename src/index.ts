@@ -9,7 +9,12 @@ whenOdysseyLoaded.then(() => {
     let Component: ComponentType | null = null;
 
     switch (componentName) {
-      case 'app':
+      case 'all-days':
+      case 'contacts-quiz':
+      case 'daily-route':
+      case 'download':
+      case 'heat-interpolated':
+      case 'popular-contacts':
         Component = App;
         break;
       default:

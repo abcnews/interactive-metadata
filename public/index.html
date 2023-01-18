@@ -7,7 +7,18 @@
     <script src="index.js"></script>
   </head>
   <body>
-    <div data-mount id="metadata:app"></div>
+    <h2>Contacts Quiz</h2>
+    <div data-mount id="metadata:contacts-quiz"></div>
+    <h2>Interpolated Heatmap</h2>
+    <div data-mount id="metadata:heat-interpolated"></div>
+    <h2>Daily Route</h2>
+    <div data-mount id="metadata:daily-route"></div>
+    <h2>Popular Contacts</h2>
+    <div data-mount id="metadata:popular-contacts"></div>
+    <h2>Download</h2>
+    <div data-mount id="metadata:download"></div>
+    <h2>All Days</h2>
+    <div data-mount id="metadata:all-days"></div>
     <!-- Mock Odyssey's loaded event so the `whenOdysseyLoaded` promise resolves -->
     <script>
       window.dispatchEvent(new CustomEvent('odyssey:api'));
