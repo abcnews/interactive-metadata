@@ -6,7 +6,8 @@
   export let data: Data;
   export let day: string | null = null;
 
-  $: dayComms = day ? data.commsByDay[day] : undefined;
+  $: currentDay = day || Object.keys(data.commsByDay)[0];
+  $: dayComms = data.commsByDay[currentDay];
 </script>
 
 <div>
