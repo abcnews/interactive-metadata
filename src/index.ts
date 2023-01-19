@@ -7,12 +7,17 @@ import Download from './components/Download/Download.svelte';
 import InterpolatedHeatmap from './components/InterpolatedHeatmap/InterpolatedHeatmap.svelte';
 import PopularContacts from './components/PopularContacts/PopularContacts.svelte';
 import { DAY_MOUNT_FORMAT, DAY_MOUNT_FORMAT_REPLACEMENT } from './constants';
+import { whenDataLoaded } from './data';
 
-whenOdysseyLoaded.then(() => {
+Promise.all([whenDataLoaded, whenOdysseyLoaded]).then(([data]) => {
+  console.debug('[interactive-metadata] data', data);
+
   selectMounts('metadata').forEach(mountEl => {
     const [, componentName, optionalPropValue] = getMountValue(mountEl).split(':');
     let Component: ComponentType | null = null;
-    let props = {};
+    let props: Record<string, unknown> = {
+      data
+    };
 
     switch (componentName) {
       case 'contacts-quiz':
@@ -22,6 +27,7 @@ whenOdysseyLoaded.then(() => {
         Component = DailyRoute;
         if (optionalPropValue && DAY_MOUNT_FORMAT.test(optionalPropValue)) {
           props = {
+            ...props,
             day: optionalPropValue.replace(DAY_MOUNT_FORMAT, DAY_MOUNT_FORMAT_REPLACEMENT)
           };
         }
