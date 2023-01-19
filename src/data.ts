@@ -55,14 +55,14 @@ type Metadata = {
   };
 };
 
-type Cell = {
+export type Cell = {
   cgi: string;
   lat: number;
   lon: number;
   name: string;
 };
 
-type Comm = {
+export type Comm = {
   id: string;
   type?: string;
   contact?: string;
@@ -70,7 +70,7 @@ type Comm = {
   cell: Cell;
 };
 
-type Contact = {
+export type Contact = {
   Phone: number;
   SMS: number;
   handle?: string;
