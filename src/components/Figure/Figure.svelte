@@ -8,6 +8,7 @@
 
 <style>
   figure {
+    position: relative;
     margin: 0;
     min-height: var(--figure-fixedHeight, 256px);
   }

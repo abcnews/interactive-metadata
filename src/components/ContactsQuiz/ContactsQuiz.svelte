@@ -2,6 +2,7 @@
   import type { Data } from '../../data';
   import DailyActivity from '../DailyActivity/DailyActivity.svelte';
   import Figure from '../Figure/Figure.svelte';
+  import Legend from '../Legend/Legend.svelte';
   import YearlyActivity from '../YearlyActivity/YearlyActivity.svelte';
   import { QUESTIONS } from './constants';
 
@@ -16,6 +17,7 @@
 <div>
   <code>[contacts-quiz]</code>
   {#if contactComms}
+    <Legend isInline isInternetExcluded />
     <DailyActivity comms={contactComms} />
     <YearlyActivity comms={contactComms} />
   {/if}
