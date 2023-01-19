@@ -6,6 +6,7 @@ import DailyRoute from './components/DailyRoute/DailyRoute.svelte';
 import Download from './components/Download/Download.svelte';
 import InterpolatedHeatmap from './components/InterpolatedHeatmap/InterpolatedHeatmap.svelte';
 import PopularContacts from './components/PopularContacts/PopularContacts.svelte';
+import './components/global.css';
 import { DAY_MOUNT_FORMAT, DAY_MOUNT_FORMAT_REPLACEMENT } from './constants';
 import { whenDataLoaded } from './data';
 

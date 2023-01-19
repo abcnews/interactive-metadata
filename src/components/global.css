@@ -1,0 +1,10 @@
+:root {
+  --metadata-color-white: #fff;
+  --metadata-color-red: #ba0017;
+  --metadata-color-green: #269a49;
+  --metadata-color-blue: #005992;
+  --metadata-color-gold: #e37512;
+  --metadata-color-phone: var(--metadata-color-blue);
+  --metadata-color-sms: var(--metadata-color-gold);
+  --metadata-color-internet: var(--metadata-color-green);
+}
