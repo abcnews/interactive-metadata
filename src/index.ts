@@ -8,7 +8,7 @@ import InterpolatedHeatmap from './components/InterpolatedHeatmap/InterpolatedHe
 import PopularContacts from './components/PopularContacts/PopularContacts.svelte';
 import './components/global.css';
 import { DAY_MOUNT_FORMAT, DAY_MOUNT_FORMAT_REPLACEMENT } from './constants';
-import { whenDataLoaded } from './data';
+import { getInferredHeatData, whenDataLoaded } from './data';
 
 Promise.all([whenDataLoaded, whenOdysseyLoaded]).then(([data]) => {
   console.debug('[interactive-metadata] data', data);
@@ -38,6 +38,10 @@ Promise.all([whenDataLoaded, whenOdysseyLoaded]).then(([data]) => {
         break;
       case 'interpolated-heatmap':
         Component = InterpolatedHeatmap;
+        props = {
+          ...props,
+          inferredHeatData: getInferredHeatData(data)
+        };
         break;
       case 'popular-contacts':
         Component = PopularContacts;

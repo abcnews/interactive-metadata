@@ -1,10 +1,12 @@
 import type { LngLatLike } from 'maplibre-gl';
 import { Map, Marker } from 'maplibre-gl';
-import type { Action } from 'svelte/action';
-import CommMarker from './CommMarker';
-import { DEFAULT_MAP_CONFIG, ROUTE_LAYER_ID, ROUTE_LAYER_PROPS, ROUTE_SOURCE_ID } from './constants';
-import { createRouteSource, getBounds } from './utils';
 import 'maplibre-gl/dist/maplibre-gl.css';
+import type { Action } from 'svelte/action';
+import { DEFAULT_MAP_CONFIG } from '../../constants';
+import { getBounds } from '../../utils';
+import CommMarker from './CommMarker';
+import { ROUTE_LAYER_ID, ROUTE_LAYER_PROPS, ROUTE_SOURCE_ID } from './constants';
+import { createRouteSource } from './utils';
 
 export interface MLGLActionPoint {
   type?: string;

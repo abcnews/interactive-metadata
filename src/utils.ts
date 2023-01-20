@@ -1,4 +1,12 @@
+import type { LngLatLike } from 'maplibre-gl';
+import { LngLatBounds } from 'maplibre-gl';
 import { MONTHS_SHORT } from './constants';
+
+export const getBounds = (coordinates: LngLatLike[]) =>
+  coordinates.reduce<LngLatBounds>(
+    (bounds, coord) => bounds.extend(coord),
+    new LngLatBounds(coordinates[0], coordinates[0])
+  );
 
 export const getDayKey = (date: Date) =>
   `${date.getDate()} ${MONTHS_SHORT[date.getMonth()]} ${String(date.getFullYear()).replace('20', `'`)}`;

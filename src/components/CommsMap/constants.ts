@@ -1,15 +1,5 @@
 import type { LayerSpecification } from 'maplibre-gl';
 
-export const DEFAULT_MAP_CONFIG = {
-  zoom: 12,
-  maxZoom: 14,
-  interactive: false,
-  attributionControl: false,
-  dragRotate: false,
-  doubleClickZoom: false,
-  style: 'https://www.abc.net.au/res/sites/news-projects/map-vector-style-light/style.json'
-};
-
 export const ROUTE_SOURCE_ID = 'route-source';
 
 export const ROUTE_LAYER_ID = 'route-layer';

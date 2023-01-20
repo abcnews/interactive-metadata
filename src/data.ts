@@ -156,3 +156,129 @@ export const whenDataLoaded = fetch(`${__webpack_public_path__}data/metadata.jso
       contacts
     } as Data;
   });
+
+function locationWeightedAverage(coordinates: number[][], weights?: number[]) {
+  // If weights isn't supplied, assume a weighting of 1 for every location.
+  if (!weights) {
+    weights = Array.apply(null, Array(coordinates.length)).map(Number.prototype.valueOf, 1);
+  }
+
+  // Make sure weights is valid.
+  if (coordinates.length !== weights.length) {
+    throw new Error(
+      'If the second argument (weights) is supplied, it must be the same length as the first argument (coordinates).'
+    );
+  }
+
+  // Calculate the total weight to use as the denominator when avg positions are calculated.
+  const denom = weights.reduce(function (t, d) {
+    return t + d;
+  }, 0);
+
+  // Caluclate the weighted average position in cartesian coordinates.
+  const cart = coordinates
+    .map(function (d) {
+      // Calculate 3d cartesian coordinates assuming unit circle for each lat/lng
+
+      // Make all coords into radians
+      const r = d.map(deg2rad);
+
+      // XYZ assuming unit circle
+      const x = Math.cos(r[0]) * Math.cos(r[1]);
+      const y = Math.cos(r[0]) * Math.sin(r[1]);
+      const z = Math.sin(r[0]);
+
+      return [x, y, z];
+    })
+    .reduce(
+      function (t, d, i) {
+        // Weight and sum all the cartesian coordinates.
+        return d.map(function (d, ti) {
+          return t[ti] + d * (weights as number[])[i];
+        });
+      },
+      [0, 0, 0]
+    )
+    .map(function (d) {
+      // Divide all cartesian coordinates by the total weight.
+      return d / denom;
+    });
+
+  // Convert back to lat/lng and return.
+  return [
+    Math.atan2(cart[2], Math.sqrt(Math.pow(cart[0], 2) + Math.pow(cart[1], 2))),
+    Math.atan2(cart[1], cart[0])
+  ].map(rad2deg);
+}
+
+function deg2rad(deg: number) {
+  return deg * (Math.PI / 180);
+}
+
+function rad2deg(rad: number) {
+  return rad * (180 / Math.PI);
+}
+
+// 10 mins
+const HEAT_INTERVAL = 600000;
+// four hour window
+const HEAT_BUFFER = 3600000 * 2;
+
+type InWindow = [[number, number][], number[]];
+
+export type InferredHeatData = [[Date, ...number[][]]];
+
+let cachedInferredHeatData: InferredHeatData;
+
+export const getInferredHeatData = (data: Data) => {
+  if (Array.isArray(cachedInferredHeatData)) {
+    return cachedInferredHeatData;
+  }
+
+  let time: number;
+  let end: number;
+  let inWindow: InWindow;
+  let idxStart: number;
+  let idxEnd: number;
+
+  cachedInferredHeatData = [] as unknown as InferredHeatData;
+
+  // Just the internet stuff.
+  const internetComms = data.comms.filter(function (d) {
+    return d.type === 'Internet';
+  });
+
+  internetComms.sort(function (a, b) {
+    return a.date > b.date ? 1 : -1;
+  });
+
+  time = internetComms[0].date.getTime() - HEAT_INTERVAL;
+  end = internetComms[internetComms.length - 1].date.getTime();
+  idxStart = idxEnd = 0;
+
+  while ((time += HEAT_INTERVAL) <= end) {
+    while (idxStart < internetComms.length && internetComms[idxStart].date < new Date(time - HEAT_BUFFER)) {
+      idxStart++;
+    }
+
+    while (idxEnd < internetComms.length && internetComms[idxEnd].date <= new Date(time + HEAT_BUFFER)) {
+      idxEnd++;
+    }
+
+    inWindow = internetComms.slice(idxStart, idxEnd).reduce(
+      (inWindow, comm: Comm) => {
+        inWindow[0].push([comm.cell.lat, comm.cell.lng]);
+        inWindow[1].push(1 / (Math.abs(comm.date.getTime() - time) + 1));
+
+        return inWindow;
+      },
+      [[], []] as InWindow
+    );
+
+    if (inWindow[0].length) {
+      cachedInferredHeatData.push([new Date(time), locationWeightedAverage(inWindow[0], inWindow[1])]);
+    }
+  }
+
+  return cachedInferredHeatData;
+};
