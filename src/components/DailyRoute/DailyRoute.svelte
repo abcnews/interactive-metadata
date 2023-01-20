@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Data } from '../../data';
+  import CommsMap from '../CommsMap/CommsMap.svelte';
   import DailyActivity from '../DailyActivity/DailyActivity.svelte';
   import Figure from '../Figure/Figure.svelte';
   import Legend from '../Legend/Legend.svelte';
@@ -13,11 +14,9 @@
 
 <div>
   <code>[daily-route]{day ? ` (${day})` : ''}</code>
-  {#if dayComms}
-    <DailyActivity comms={dayComms} />
-  {/if}
+  <DailyActivity comms={dayComms} />
   <Figure>
-    <code>[map]</code>
+    <CommsMap comms={dayComms} hasRoute />
     <div class="overlay">
       <Legend />
     </div>
@@ -27,10 +26,11 @@
 <style>
   .overlay {
     position: absolute;
-    top: 24px;
-    left: 24px;
+    top: 16px;
+    left: 16px;
     border-radius: 3px;
     padding: 2px 5px 0 3px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+    background-color: var(--metadata-color-white);
   }
 </style>

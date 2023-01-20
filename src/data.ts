@@ -58,7 +58,7 @@ type Metadata = {
 export type Cell = {
   cgi: string;
   lat: number;
-  lon: number;
+  lng: number;
   name: string;
 };
 
@@ -99,7 +99,7 @@ export const whenDataLoaded = fetch(`${__webpack_public_path__}data/metadata.jso
         cells[cell_tower.cell_cgi] = {
           cgi: cell_tower.cell_cgi,
           lat: +cell_tower.cell_tower_lat,
-          lon: +cell_tower.cell_tower_long,
+          lng: +cell_tower.cell_tower_long,
           name: cell_tower.cell_tower_location
         };
       }

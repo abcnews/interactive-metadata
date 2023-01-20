@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Data } from '../../data';
+  import CommsMap from '../CommsMap/CommsMap.svelte';
   import DailyActivity from '../DailyActivity/DailyActivity.svelte';
   import Figure from '../Figure/Figure.svelte';
   import Legend from '../Legend/Legend.svelte';
@@ -20,8 +21,8 @@
     <Legend isInline isInternetExcluded />
     <DailyActivity comms={contactComms} />
     <YearlyActivity comms={contactComms} />
+    <Figure>
+      <CommsMap comms={contactComms} />
+    </Figure>
   {/if}
-  <Figure>
-    <code>[map]</code>
-  </Figure>
 </div>

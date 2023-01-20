@@ -1,0 +1,20 @@
+.CommsMap_CommMarker {
+  opacity: 0.2;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  background-color: var(--metadata-color-grey);
+}
+
+.CommsMap_CommMarker[data-type='phone'] {
+  background-color: var(--metadata-color-phone);
+}
+
+.CommsMap_CommMarker[data-type='sms'] {
+  background-color: var(--metadata-color-sms);
+}
+
+.CommsMap_CommMarker[data-type='internet'] {
+  background-color: var(--metadata-color-internet);
+}
