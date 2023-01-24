@@ -4,11 +4,13 @@
   import DailyActivity from '../DailyActivity/DailyActivity.svelte';
   import Figure from '../Figure/Figure.svelte';
   import Legend from '../Legend/Legend.svelte';
+  import Slider from '../Slider/Slider.svelte';
 
   export let data: Data;
   export let day: string | null = null;
 
-  $: currentDay = day || Object.keys(data.commsByDay)[0];
+  $: days = Object.keys(data.commsByDay);
+  $: currentDay = day || days[0];
   $: dayComms = data.commsByDay[currentDay];
 </script>
 
@@ -21,6 +23,11 @@
       <Legend />
     </div>
   </Figure>
+  {#if day}
+    <p>{day}</p>
+  {:else}
+    <Slider range={days} initial={currentDay} on:change={({ detail }) => (currentDay = detail)} />
+  {/if}
 </div>
 
 <style>

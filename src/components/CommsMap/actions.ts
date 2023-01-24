@@ -57,7 +57,7 @@ export const mlgl: Action<HTMLElement, MLGLActionParam> = (el, param) => {
 
     map.fitBounds(getBounds(coordinates), {
       padding: 48,
-      duration: 500
+      duration: 1000
     });
   };
 

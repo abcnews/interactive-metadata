@@ -1,5 +1,9 @@
 :root {
   --metadata-color-white: #fff;
+  --metadata-color-black: #333;
+  --metadata-color-grey: #666;
+  --metadata-color-lightgrey: #ddd;
+  --metadata-color-lightergrey: #f9f9f9;
   --metadata-color-red: #ba0017;
   --metadata-color-green: #269a49;
   --metadata-color-blue: #005992;
