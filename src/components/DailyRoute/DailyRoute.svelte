@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Data } from '../../data';
+  import Card from '../Card/Card.svelte';
   import CommsMap from '../CommsMap/CommsMap.svelte';
   import DailyActivity from '../DailyActivity/DailyActivity.svelte';
   import Figure from '../Figure/Figure.svelte';
@@ -14,7 +15,7 @@
   $: dayComms = data.commsByDay[currentDay];
 </script>
 
-<div>
+<Card>
   <code>[daily-route]{day ? ` (${day})` : ''}</code>
   <DailyActivity comms={dayComms} />
   <Figure>
@@ -28,7 +29,7 @@
   {:else}
     <Slider range={days} initial={currentDay} on:change={({ detail }) => (currentDay = detail)} />
   {/if}
-</div>
+</Card>
 
 <style>
   .overlay {

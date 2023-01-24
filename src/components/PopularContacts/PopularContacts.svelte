@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Data } from '../../data';
+  import Card from '../Card/Card.svelte';
   import CommsMap from '../CommsMap/CommsMap.svelte';
   import DailyActivity from '../DailyActivity/DailyActivity.svelte';
   import Figure from '../Figure/Figure.svelte';
@@ -15,7 +16,7 @@
   $: contactComms = data.comms.filter(comm => comm.contact === currentContactId);
 </script>
 
-<div>
+<Card>
   <code>[popular-contacts]</code>
   {#if currentContact}
     <code>{JSON.stringify(currentContact)}</code>
@@ -28,4 +29,4 @@
       <CommsMap comms={contactComms} />
     </Figure>
   {/if}
-</div>
+</Card>

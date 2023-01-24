@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Data } from '../../data';
+  import Card from '../Card/Card.svelte';
   import CommsMap from '../CommsMap/CommsMap.svelte';
   import DailyActivity from '../DailyActivity/DailyActivity.svelte';
   import Figure from '../Figure/Figure.svelte';
@@ -15,7 +16,7 @@
   $: contactComms = data.comms.filter(comm => comm.contact === question.contactId);
 </script>
 
-<div>
+<Card>
   <code>[contacts-quiz]</code>
   {#if contactComms}
     <Legend isInline isInternetExcluded />
@@ -25,4 +26,4 @@
       <CommsMap comms={contactComms} />
     </Figure>
   {/if}
-</div>
+</Card>
