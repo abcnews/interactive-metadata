@@ -31,7 +31,7 @@
           <Rows>
             <DailyActivity comms={contactComms} />
             <YearlyActivity comms={contactComms} />
-            <Figure>
+            <Figure fixedHeight={300}>
               <CommsMap comms={contactComms} />
             </Figure>
           </Rows>
