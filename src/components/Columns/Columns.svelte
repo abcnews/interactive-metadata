@@ -12,6 +12,7 @@
   @media (min-width: 980px) {
     div {
       flex-direction: row;
+      width: 100%;
     }
   }
 </style>
