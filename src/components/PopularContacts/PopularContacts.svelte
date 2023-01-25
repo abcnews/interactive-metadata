@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Data } from '../../data';
+  import Button from '../Button/Button.svelte';
   import Card from '../Card/Card.svelte';
   import Columns from '../Columns/Columns.svelte';
   import CommsMap from '../CommsMap/CommsMap.svelte';
@@ -29,8 +30,8 @@
           {#each contactIds as contactId}
             {@const contact = data.contacts[contactId]}
             <li>
-              <button
-                data-is-current={contactId === currentContactId ? '' : undefined}
+              <Button
+                kind={contactId === currentContactId ? 'newsblue' : undefined}
                 on:click={() => (currentContactId = contactId)}
               >
                 <span class="id">{contactId.slice(0, 8)}</span>
@@ -52,7 +53,7 @@
                     />
                   </svg>
                 </span>
-              </button>
+              </Button>
             </li>
           {/each}
         </ol>
@@ -102,22 +103,6 @@
 
   li + li {
     margin-top: 6px;
-  }
-
-  button {
-    border: 1px solid var(--metadata-color-lightgrey);
-    border-radius: 8px;
-    padding: 8px 16px 7px;
-    width: 100%;
-    background-color: var(--metadata-color-lightergrey);
-    display: flex;
-    font-size: 15px;
-    cursor: pointer;
-  }
-
-  button[data-is-current] {
-    border-color: transparent;
-    background-color: var(--metadata-color-newsblue);
   }
 
   .id {
