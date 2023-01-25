@@ -30,6 +30,7 @@ export const QUESTIONS = [
     contactId: '02927b3dd5e1b61dcdd4ef92a73af6e3894988435384abfc718d77bd0589ad4a', // work source
     redHerringId: '0b296c5ea64da22b95c7f71bae8fdf3c447738d646304faa242b7fcaf8e3d2e3', // (work colleague)
     description: 'As a journalist, sources’ identity can be critically important. Can you tell if this is a source?',
-    explanation: 'You scored [score].'
+    // explanation: 'You scored [score].'
+    explanation: ''
   }
 ];
