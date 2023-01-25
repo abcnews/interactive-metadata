@@ -19,6 +19,12 @@
     cursor: pointer;
   }
 
+  button[data-kind='dark'] {
+    border-color: transparent;
+    background-color: var(--metadata-color-grey);
+    color: var(--metadata-color-white);
+  }
+
   button[data-kind='newsblue'] {
     border-color: transparent;
     background-color: var(--metadata-color-newsblue);
