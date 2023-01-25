@@ -14,6 +14,7 @@
     width: 100%;
     background-color: var(--metadata-color-lightergrey);
     display: flex;
+    justify-content: center;
     font-size: 15px;
     cursor: pointer;
   }
