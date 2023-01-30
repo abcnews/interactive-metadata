@@ -32,7 +32,7 @@
     -ms-user-select: none;
     user-select: none;
     background-color: hsl(0 0% 25%);
-    pointer-events: none;
+    /* pointer-events: none; */
   }
 
   .map {

@@ -32,7 +32,7 @@ export const DAY_MOUNT_FORMAT_REPLACEMENT = `$1 $2 '$3`;
 export const DEFAULT_MAP_CONFIG = {
   zoom: 12,
   maxZoom: 14,
-  interactive: false,
+  // interactive: false,
   attributionControl: false,
   dragRotate: false,
   doubleClickZoom: false,
