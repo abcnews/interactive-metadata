@@ -13,3 +13,21 @@
   --metadata-color-sms: var(--metadata-color-gold);
   --metadata-color-internet: var(--metadata-color-green);
 }
+
+@media (min-width: 980px) {
+  [data-mount][id='metadata:hasheadshots'] ~ .Quote {
+    position: relative;
+  }
+
+  [data-mount][id='metadata:hasheadshots'] ~ .Quote::after {
+    content: '';
+    position: absolute;
+    top: 0.5rem;
+    right: calc(100% + 0.5rem);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    background-image: url(./headshot.jpg);
+    background-size: cover;
+  }
+}
