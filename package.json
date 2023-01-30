@@ -1,33 +1,33 @@
 {
-  "name": "interactive-metadata",
-  "version": "1.0.0-pre",
-  "description": "A project generated from aunty's svelte project template.",
-  "license": "MIT",
-  "private": true,
-  "contributors": [
-    "Simon Elvery <elvery.simon@abc.net.au>",
-    "Colin Gourlay <gourlay.colin@abc.net.au>"
-  ],
-  "aunty": {
-    "type": "svelte"
-  },
-  "scripts": {
-    "start": "aunty serve",
-    "dev": "aunty serve",
-    "test": "aunty test"
-  },
-  "devDependencies": {
-    "@abcnews/aunty": "^13.2.2",
-    "@testing-library/svelte": "^3.2.2",
-    "@types/jest": "^29.2.5",
-    "@types/webpack-env": "^1.18.0"
-  },
-  "dependencies": {
-    "@abcnews/alternating-case-to-object": "^3.1.0",
-    "@abcnews/env-utils": "^3.1.0",
-    "@abcnews/mount-utils": "^2.0.0",
-    "maplibre-gl": "^2.4.0",
-    "svelte": "^3.55.1",
-    "svelte-range-slider-pips": "^2.1.1"
-  }
+	"name": "interactive-metadata",
+	"version": "1.0.0",
+	"description": "A project generated from aunty's svelte project template.",
+	"license": "MIT",
+	"private": true,
+	"contributors": [
+		"Simon Elvery <elvery.simon@abc.net.au>",
+		"Colin Gourlay <gourlay.colin@abc.net.au>"
+	],
+	"aunty": {
+		"type": "svelte"
+	},
+	"scripts": {
+		"start": "aunty serve",
+		"dev": "aunty serve",
+		"test": "aunty test"
+	},
+	"devDependencies": {
+		"@abcnews/aunty": "^13.2.2",
+		"@testing-library/svelte": "^3.2.2",
+		"@types/jest": "^29.2.5",
+		"@types/webpack-env": "^1.18.0"
+	},
+	"dependencies": {
+		"@abcnews/alternating-case-to-object": "^3.1.0",
+		"@abcnews/env-utils": "^3.1.0",
+		"@abcnews/mount-utils": "^2.0.0",
+		"maplibre-gl": "^2.4.0",
+		"svelte": "^3.55.1",
+		"svelte-range-slider-pips": "^2.1.1"
+	}
 }
