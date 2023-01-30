@@ -5,7 +5,8 @@
   "license": "MIT",
   "private": true,
   "contributors": [
-    "Colin Gourlay <colin@colin-gourlay.com>"
+    "Simon Elvery <elvery.simon@abc.net.au>",
+    "Colin Gourlay <gourlay.colin@abc.net.au>"
   ],
   "aunty": {
     "type": "svelte"
