@@ -226,7 +226,9 @@ const HEAT_BUFFER = 3600000 * 2;
 
 type InWindow = [[number, number][], number[]];
 
-export type InferredHeatData = [[Date, ...number[][]]];
+export type InferredHeatDatum = [Date, ...number[][]];
+
+export type InferredHeatData = InferredHeatDatum[];
 
 let cachedInferredHeatData: InferredHeatData;
 
